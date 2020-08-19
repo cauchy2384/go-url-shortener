@@ -1,0 +1,14 @@
+name: goreportcard-refresh
+on:
+    release:
+        types:
+            - created
+        tags:
+            - 'v[0-9]+.[0-9]+.[0-9]+'
+jobs:
+    build:
+        name: Update goreport card
+        runs-on: ubuntu-latest
+        steps:
+            - name: Update
+              uses: creekorful/goreportcard-action@v1.0
