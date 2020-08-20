@@ -1,3 +1,5 @@
+// Package describes url shortener application with CLI interface
+// and in-memory storage.
 package main
 
 import (
@@ -6,24 +8,24 @@ import (
 	"os"
 	"strings"
 
-	"github.com/cauchy2384/go-url-shortener/internal"
+	"github.com/cauchy2384/go-url-shortener/pkg/shortener"
 )
 
 func main() {
 	scanner := bufio.NewScanner(os.Stdin)
-	shortener := internal.NewURLShortener()
+	urlShortener := shortener.NewService()
 
 	for scanner.Scan() {
 		line := scanner.Text()
 
 		var (
 			result string
-			err error
+			err    error
 		)
 		if strings.HasPrefix(line, "http") {
-			result, err = shortener.ShortenURL(line)
+			result, err = urlShortener.ShortenURL(line)
 		} else {
-			result, err = shortener.RetrieveURL(line)
+			result, err = urlShortener.RetrieveURL(line)
 		}
 		if err != nil {
 			fmt.Println(err)

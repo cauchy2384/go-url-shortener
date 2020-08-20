@@ -1,9 +1,12 @@
-package internal
+package shortener_test
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+
+	"github.com/cauchy2384/go-url-shortener/pkg/shortener"
 )
 
 const (
@@ -12,7 +15,7 @@ const (
 )
 
 func TestShortenURL(t *testing.T) {
-	s := NewURLShortener()
+	s := shortener.NewService()
 
 	short, err := s.ShortenURL(mediumURL)
 	assert.NoError(t, err)
@@ -20,7 +23,7 @@ func TestShortenURL(t *testing.T) {
 }
 
 func TestShortenURL_SameURLs(t *testing.T) {
-	s := NewURLShortener()
+	s := shortener.NewService()
 
 	short1, err := s.ShortenURL(mediumURL)
 	assert.NoError(t, err)
@@ -32,7 +35,7 @@ func TestShortenURL_SameURLs(t *testing.T) {
 }
 
 func TestShortenURL_DiffURLs(t *testing.T) {
-	s := NewURLShortener()
+	s := shortener.NewService()
 
 	short1, err := s.ShortenURL(mediumURL)
 	assert.NoError(t, err)
@@ -44,7 +47,7 @@ func TestShortenURL_DiffURLs(t *testing.T) {
 }
 
 func TestRetrieveURL_Exists(t *testing.T) {
-	s := NewURLShortener()
+	s := shortener.NewService()
 
 	short, err := s.ShortenURL(mediumURL)
 	assert.NoError(t, err)
@@ -56,12 +59,12 @@ func TestRetrieveURL_Exists(t *testing.T) {
 }
 
 func TestRetrieveURL_NotExists(t *testing.T) {
-	s := NewURLShortener()
+	s := shortener.NewService()
 
-	short, err := shorten(mediumURL)
-	assert.NoError(t, err)
+	short := "SMTH"
 
 	url, err := s.RetrieveURL(short)
 	assert.Error(t, err)
+	assert.True(t, errors.Is(err, shortener.ErrorURLNotFound))
 	assert.Zero(t, url)
 }
