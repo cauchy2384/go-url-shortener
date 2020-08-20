@@ -53,10 +53,10 @@ linters:
         - maligned
         - nestif
         - prealloc
-        - testpackage
 
     # don't enable:
     # - wsl
+    # - testpackage
 
 linters-settings:
     golint:

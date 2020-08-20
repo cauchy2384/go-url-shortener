@@ -1,0 +1,15 @@
+mode: atomic
+github.com/cauchy2384/go-url-shortener/pkg/shortener/repository.go:11.33,13.2 1 5
+github.com/cauchy2384/go-url-shortener/pkg/shortener/repository.go:16.39,18.2 1 5
+github.com/cauchy2384/go-url-shortener/pkg/shortener/repository.go:22.72,24.13 2 8
+github.com/cauchy2384/go-url-shortener/pkg/shortener/repository.go:28.2,33.20 2 2
+github.com/cauchy2384/go-url-shortener/pkg/shortener/repository.go:24.13,26.3 1 6
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:17.27,21.2 1 5
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:24.68,25.46 1 6
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:29.2,29.53 1 6
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:33.2,38.19 2 5
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:25.46,27.3 1 0
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:29.53,31.3 1 1
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:43.69,45.16 2 2
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:49.2,49.25 1 1
+github.com/cauchy2384/go-url-shortener/pkg/shortener/service.go:45.16,47.3 1 1
