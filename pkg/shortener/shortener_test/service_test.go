@@ -1,6 +1,7 @@
 package shortener_test
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -64,5 +65,6 @@ func TestRetrieveURL_NotExists(t *testing.T) {
 
 	url, err := s.RetrieveURL(short)
 	assert.Error(t, err)
+	assert.True(t, errors.Is(err, shortener.ErrorURLNotFound))
 	assert.Zero(t, url)
 }

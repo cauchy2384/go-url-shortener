@@ -10,6 +10,7 @@ import (
 
 const shortenLength = 8
 
+// Hash takes an url and returns its hash trimmed to shortenLength.
 func Hash(url string) (hash string, err error) {
 	hashed := sha512.New()
 	_, err = io.Copy(

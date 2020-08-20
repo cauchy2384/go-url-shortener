@@ -1,3 +1,5 @@
+// Package describes url shortener application with CLI interface
+// and in-memory storage.
 package main
 
 import (

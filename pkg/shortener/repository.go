@@ -1,34 +1,34 @@
 package shortener
 
 import (
-	"errors"
 	"fmt"
 )
 
-var (
-	ErrorURLNotFound = errors.New("url not found")
-)
+// Repository defines in-memory storage for urls.
+type repository map[string]string
 
-type Repository map[string]string
-
-func NewRepository() Repository {
+// NewRepository returns new repository instance.
+func newRepository() repository {
 	return make(map[string]string)
 }
 
-func (r Repository) Save(url *URL) {
-	r[url.Short] = url.Full
+// Save URL to storage.
+func (r repository) Save(record *url) {
+	r[record.Short] = record.Long
 }
 
-func (r Repository) FindByShort(short string) (url *URL, err error) {
+// FindByShort returns URL that corresponds to given short key.
+// Returns ErrorURLNotFound if nothing exists.
+func (r repository) findByShort(short string) (record *url, err error) {
 	full, exists := r[short]
 	if !exists {
 		return nil, fmt.Errorf("%w for %q", ErrorURLNotFound, short)
 	}
 
-	url = &URL{
-		Full:  full,
+	record = &url{
+		Long:  full,
 		Short: short,
 	}
 
-	return url, nil
+	return record, nil
 }
